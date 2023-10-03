@@ -6,7 +6,7 @@ const plusbtn = document.querySelector('#plus')
 const heartbtn = document.querySelector('#heart')
 const submitbtn = document.getElementById('comment-form')
 const newComm = document.getElementById('list')
-//let newLike = document.querySelector('.likes')
+let newLike = document.querySelector('.likes')
 let count = 0;
 let intervalId;
 let pause;
@@ -73,23 +73,20 @@ submitbtn.addEventListener("submit", (event) => {
 
 }) 
 
-// let likeObj = {}
-// function heartClick (click) {
-//     for(let i = 0; i > 1; i++ ){
+ let likeObj = {}
 
-//     }
-// console.log(heartClick)
-// }
-
-// heartbtn.addEventListener("click", () => {
-     //let counterValue = document.getElementById('counter').textContent
-    // let li = document.createElement("li") 
-    // if (likeObj[counterValue]) {
-    //      likeObj[counterValue] += 1
-    //  } else {
-    //    likeObj[counterValue] = 1
-    //  } 
-    // li.innerText = `${counterValue} has been liked ${likeObj[counterValue]} times.` 
-    // let likesUL = document.querySelector(".likes")
-    // likesUL.appendChild(li)
-//})
+ heartbtn.addEventListener("click", ()=> {
+    let sec = showSec.textContent
+    if(likeObj[sec]){
+        likeObj[sec] += 1
+    } else {
+        likeObj[sec] = 1
+    }
+    newLike.innerHTML = ""
+    for (sec in likeObj) {
+     let li = document.createElement("li")  
+     li.innerText = `${sec} has been liked ${likeObj[sec]} times.`
+     newLike.appendChild(li)
+    }
+    console.log(likeObj)
+ })
